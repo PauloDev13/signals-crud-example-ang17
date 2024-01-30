@@ -1,0 +1,29 @@
+@if (users().length) {
+  <section class="container">
+    <div class="container__header">
+      <span>Users</span>
+    </div>
+    <table [dataSource]="users()" class="mat-elevation-z8" mat-table aria-label="table">
+      @for (column of displayedColumns; track $index) {
+        <ng-container
+          [matColumnDef]="column"
+        >
+          <th *matHeaderCellDef mat-header-cell>{{ column | titlecase }}</th>
+          <td *matCellDef="let element" mat-cell>{{ element[column] }}</td>
+        </ng-container>
+      }
+
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell>Tarefas</th>
+        <td *matCellDef="let user" mat-cell>
+          <button color="accent" mat-icon-button>
+            <mat-icon>search</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="fullColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: fullColumns" mat-row></tr>
+    </table>
+  </section>
+}

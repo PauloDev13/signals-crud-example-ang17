@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "model-angular17-eslint-prettier": {
+    "signal-crud-example-ang17": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
