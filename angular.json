@@ -7,7 +7,14 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:interface": {
+          "type": "interface"
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -17,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/model-angular17-eslint-prettier",
+            "outputPath": "dist/signal-crud-example-ang17",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "model-angular17-eslint-prettier:build:production"
+              "buildTarget": "signal-crud-example-ang17:build:production"
             },
             "development": {
-              "buildTarget": "model-angular17-eslint-prettier:build:development"
+              "buildTarget": "signal-crud-example-ang17:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "model-angular17-eslint-prettier:build"
+            "buildTarget": "signal-crud-example-ang17:build"
           }
         },
         "test": {

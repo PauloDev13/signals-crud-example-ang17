@@ -1,5 +1,5 @@
 {
-  "name": "model-angular17-eslint-prettier",
+  "name": "signal-crud-example-ang17",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "server": "json-server --watch db.json"
   },
   "private": true,
   "dependencies": {
