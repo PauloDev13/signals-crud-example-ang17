@@ -20,6 +20,13 @@
       "description": "Desvendar os mistérios do Angula Signals",
       "userId": "1",
       "completed": false
+    },
+    {
+      "id": "be62",
+      "name": "Aprender Angular Signals",
+      "description": "Desvendar os mistérios do Angula Signals",
+      "userId": "2",
+      "completed": false
     }
   ]
 }

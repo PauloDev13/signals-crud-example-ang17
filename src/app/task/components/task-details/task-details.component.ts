@@ -5,7 +5,7 @@ import {
   TitleCasePipe,
 } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   MatButton,
@@ -67,6 +67,7 @@ const MATERIAL = [
   styleUrl: './task-details.component.scss',
 })
 export class TaskDetailsComponent implements OnInit {
+  @Input() id!: number | string;
   // ANGULAR
   protected readonly router = inject(Router);
   protected readonly route = inject(ActivatedRoute);
@@ -85,13 +86,18 @@ export class TaskDetailsComponent implements OnInit {
   protected userAllTasks = this.taskService.userAllTasks;
 
   ngOnInit() {
-    this.selectedUserId = this.route.snapshot.params['id'];
-
-    if (this.selectedUserId) {
-      this.userService.setSelectedUserId(this.selectedUserId);
+    // this.selectedUserId = this.route.snapshot.params['id'];
+    if (this.id) {
+      this.userService.setSelectedUserId(this.id);
     } else {
       this.router.navigate(['/']).then();
     }
+
+    // if (this.selectedUserId) {
+    //   this.userService.setSelectedUserId(this.selectedUserId);
+    // } else {
+    //   this.router.navigate(['/']).then();
+    // }
   }
 
   addNewTask() {
@@ -143,11 +149,11 @@ export class TaskDetailsComponent implements OnInit {
         // Atualiza o signal com as Tasks de um usuário
         this.taskService.userTasks.update(tasks =>
           tasks.filter(task => task.id !== id),
-        ),
-          // Atualiza o signal com todas as Tasks
-          this.taskService.userAllTasks.update(tasks =>
-            tasks.filter(task => task.id !== id),
-          );
+        );
+        // Atualiza o signal com todas as Tasks
+        this.taskService.userAllTasks.update(tasks =>
+          tasks.filter(task => task.id !== id),
+        );
       });
   }
 }
