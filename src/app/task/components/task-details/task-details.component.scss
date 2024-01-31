@@ -1,0 +1,32 @@
+th,
+td {
+  text-align: center;
+}
+
+.container {
+  padding: 2rem 10rem;
+  gap: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    > span {
+      font-size: 2rem;
+      line-height: 1rem;
+    }
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

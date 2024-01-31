@@ -14,6 +14,7 @@ import {
   MatRowDef,
   MatTable,
 } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 import { UserService } from '../../service/user.service';
 
@@ -45,4 +46,12 @@ export class UsersListComponent {
   protected fullColumns = ['id', 'name', 'email', 'gender', 'action'];
   private userService = inject(UserService);
   protected users = this.userService.users;
+  protected totalUsersCount = this.userService.totalUsersCount;
+  private router = inject(Router);
+
+  setSelectedUserId(id: number): void {
+    this.userService.setSelectedUserId(id);
+
+    this.router.navigate(['tasks', id]).then();
+  }
 }

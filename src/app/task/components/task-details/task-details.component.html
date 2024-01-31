@@ -1,0 +1,44 @@
+<section class="container">
+  <div class="container__header">
+    <span>Tasks</span>
+  </div>
+
+  <table [dataSource]="userTasks()" aria-label="table" class="mat-elevation-z8" mat-table>
+    @for (column of displayedColumns; track $index) {
+      <ng-container [matColumnDef]="column">
+        <th *matHeaderCellDef mat-header-cell>{{ column | titlecase }}</th>
+        <ng-container [ngSwitch]="column">
+          <ng-container *ngSwitchCase="'completed'">
+            <td *matCellDef="let element" mat-cell>
+              @if (element[column] === true) {
+                <mat-icon color="accent">done</mat-icon>
+              }
+
+              @if (element[column] === false) {
+                <mat-icon color="warn">schedule</mat-icon>
+              }
+            </td>
+          </ng-container
+          >
+
+          <ng-container *ngSwitchDefault
+          >
+            <td *matCellDef="let element" mat-cell>
+              {{ element[column] }}
+            </td>
+          </ng-container
+          >
+        </ng-container>
+      </ng-container>
+    }
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  </table>
+
+  <mat-divider></mat-divider>
+
+  <div class="container__actions">
+    <button color="warn" mat-raised-button routerLink="/">Back</button>
+  </div>
+</section>

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { IUser } from '../user.interface';
@@ -10,6 +10,12 @@ import { IUser } from '../user.interface';
 export class UserService {
   http = inject(HttpClient);
   userUrl = 'http://localhost:3000/users';
+  selectedUserId = signal(0);
   private users$ = this.http.get<IUser[]>(this.userUrl);
   users = toSignal(this.users$, { initialValue: [] as IUser[] });
+  totalUsersCount = computed(() => this.users().length);
+
+  setSelectedUserId(id: number): void {
+    this.selectedUserId.set(id);
+  }
 }
