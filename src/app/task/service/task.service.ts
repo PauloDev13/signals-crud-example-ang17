@@ -17,7 +17,7 @@ export class TaskService {
 
   private userTasks$ = toObservable(this.userService.selectedUserId).pipe(
     switchMap(userId =>
-      this.http.get<ITask[]>(`${this.taskUrl}?id=${userId}`).pipe(
+      this.http.get<ITask[]>(`${this.taskUrl}?userId=${userId}`).pipe(
         tap(tasks => {
           this.userTasks.set(tasks);
         }),

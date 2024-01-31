@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Luke Skywalker",
       "email": "luke_skywalker@email.com",
       "gender": "M"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Leia Organa",
       "email": "leia@example.com",
       "gender": "F"
@@ -15,25 +15,32 @@
   ],
   "tasks": [
     {
-      "id": 1,
-      "name": "Destruir estrela da morte",
-      "description": "Destruir a estrela da morte para acabar com o Império",
-      "userId": 1,
-      "completed": false
-    },
-    {
-      "id": 2,
+      "id": "2",
       "name": "Desafiar Darth Vader",
       "description": "Enfrentar Darth Vader e derrota-lo",
-      "userId": 1,
-      "completed": false
+      "userId": 2,
+      "completed": true
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Motivar resistência",
       "description": "Não deixar a resistência perder a motivação na luta contra o império",
       "userId": 2,
-      "completed": false
+      "completed": true
+    },
+    {
+      "id": "5f19",
+      "name": "Aprender Angular Signals",
+      "description": "Desvendar os mistérios do Angula Signals",
+      "userId": "2",
+      "completed": true
+    },
+    {
+      "id": "d8ad",
+      "name": "Aprender Angular Signals",
+      "description": "Desvendar os mistérios do Angula Signals",
+      "userId": "1",
+      "completed": true
     }
   ]
 }

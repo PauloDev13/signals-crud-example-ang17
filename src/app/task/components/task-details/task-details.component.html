@@ -1,6 +1,9 @@
 <section class="container">
   <div class="container__header">
     <span>Tasks</span>
+    <button (click)="addNewTask()" color="accent" mat-fab>
+      <mat-icon>add_circle</mat-icon>
+    </button>
   </div>
 
   <table [dataSource]="userTasks()" aria-label="table" class="mat-elevation-z8" mat-table>
@@ -36,12 +39,27 @@
       <th *matHeaderCellDef mat-header-cell>Status</th>
       <td *matCellDef="let task" mat-cell>
         <button
+          (click)="updateTask(task)"
           [disabled]="task.completed"
           color="accent"
           mat-icon-button
           matTooltip="Click to complete task"
         >
           <mat-icon aria-label="Edit">done_all</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th *matHeaderCellDef mat-header-cell>Delete Task</th>
+      <td *matCellDef="let task" mat-cell>
+        <button
+          (click)="deleteTask(task.id)"
+          color="warn"
+          mat-icon-button
+          matTooltip="Click to delete task"
+        >
+          <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </td>
     </ng-container>
