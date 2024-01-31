@@ -13,7 +13,6 @@ export class TaskService {
   userTasks = signal<ITask[]>([]);
   private http = inject(HttpClient);
   private userService = inject(UserService);
-  private userUrl = 'http://localhost:3000/users';
   private taskUrl = 'http://localhost:3000/tasks';
 
   private userTasks$ = toObservable(this.userService.selectedUserId).pipe(

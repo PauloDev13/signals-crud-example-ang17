@@ -5,7 +5,7 @@ import {
   TitleCasePipe,
 } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import {
@@ -20,6 +20,7 @@ import {
   MatRowDef,
   MatTable,
 } from '@angular/material/table';
+import { MatTooltip } from '@angular/material/tooltip';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { UserService } from '../../../user/service/user.service';
@@ -51,6 +52,8 @@ const MATERIAL = [
     NgSwitchDefault,
     RouterLink,
     MATERIAL,
+    MatIconButton,
+    MatTooltip,
   ],
   templateUrl: './task-details.component.html',
   styleUrl: './task-details.component.scss',
@@ -63,6 +66,7 @@ export class TaskDetailsComponent implements OnInit {
   protected router = inject(Router);
 
   protected displayedColumns = ['id', 'name', 'description', 'completed'];
+  protected fullColumns = [...this.displayedColumns, 'status'];
   protected userTasks = this.taskService.userTasks;
 
   ngOnInit() {

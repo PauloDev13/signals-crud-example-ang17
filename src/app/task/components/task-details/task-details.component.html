@@ -32,8 +32,22 @@
       </ng-container>
     }
 
-    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+    <ng-container matColumnDef="status">
+      <th *matHeaderCellDef mat-header-cell>Status</th>
+      <td *matCellDef="let task" mat-cell>
+        <button
+          [disabled]="task.completed"
+          color="accent"
+          mat-icon-button
+          matTooltip="Click to complete task"
+        >
+          <mat-icon aria-label="Edit">done_all</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="fullColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: fullColumns" mat-row></tr>
   </table>
 
   <mat-divider></mat-divider>
