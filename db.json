@@ -15,32 +15,11 @@
   ],
   "tasks": [
     {
-      "id": "2",
-      "name": "Desafiar Darth Vader",
-      "description": "Enfrentar Darth Vader e derrota-lo",
-      "userId": 2,
-      "completed": true
-    },
-    {
-      "id": "3",
-      "name": "Motivar resistência",
-      "description": "Não deixar a resistência perder a motivação na luta contra o império",
-      "userId": 2,
-      "completed": true
-    },
-    {
-      "id": "5f19",
-      "name": "Aprender Angular Signals",
-      "description": "Desvendar os mistérios do Angula Signals",
-      "userId": "2",
-      "completed": true
-    },
-    {
-      "id": "d8ad",
+      "id": "5a79",
       "name": "Aprender Angular Signals",
       "description": "Desvendar os mistérios do Angula Signals",
       "userId": "1",
-      "completed": true
+      "completed": false
     }
   ]
 }

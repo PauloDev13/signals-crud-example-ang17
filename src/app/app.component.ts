@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterOutlet } from '@angular/router';
+
+import { TaskService } from './task/service/task.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +12,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Todo App';
+  protected readonly taskService = inject(TaskService);
+
+  constructor() {
+    effect(() => {
+      localStorage.setItem(
+        'TASKS',
+        JSON.stringify(this.taskService.userAllTasks()),
+      );
+    });
+  }
 }

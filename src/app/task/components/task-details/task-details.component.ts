@@ -82,6 +82,7 @@ export class TaskDetailsComponent implements OnInit {
   private taskService = inject(TaskService);
   //SIGNALS
   protected userTasks = this.taskService.userTasks;
+  protected userAllTasks = this.taskService.userAllTasks;
 
   ngOnInit() {
     this.selectedUserId = this.route.snapshot.params['id'];
@@ -106,7 +107,10 @@ export class TaskDetailsComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: resTask => {
+          // Atualiza o signal com as Tasks de um usuário
           this.userTasks.update(tasks => [...tasks, resTask]);
+          // Atualiza o signal com todas as Tasks
+          this.userAllTasks.update(tasks => [...tasks, resTask]);
         },
       });
   }
@@ -135,10 +139,15 @@ export class TaskDetailsComponent implements OnInit {
     this.http
       .delete<ITask[]>(`${this.tasksUrl}/${id}`)
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() =>
+      .subscribe(() => {
+        // Atualiza o signal com as Tasks de um usuário
         this.taskService.userTasks.update(tasks =>
           tasks.filter(task => task.id !== id),
         ),
-      );
+          // Atualiza o signal com todas as Tasks
+          this.taskService.userAllTasks.update(tasks =>
+            tasks.filter(task => task.id !== id),
+          );
+      });
   }
 }

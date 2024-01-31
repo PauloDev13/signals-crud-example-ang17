@@ -11,6 +11,7 @@ import { ITask } from '../task.interface';
 })
 export class TaskService {
   userTasks = signal<ITask[]>([]);
+  userAllTasks = signal<ITask[]>([]);
   private http = inject(HttpClient);
   private userService = inject(UserService);
   private taskUrl = 'http://localhost:3000/tasks';
@@ -26,6 +27,16 @@ export class TaskService {
   );
 
   readonlyUserTasks = toSignal(this.userTasks$, {
+    initialValue: [] as ITask[],
+  });
+
+  private userAllTasks$ = this.http.get<ITask[]>(`${this.taskUrl}`).pipe(
+    tap(tasks => {
+      this.userAllTasks.set(tasks);
+    }),
+  );
+
+  readonlyUserAllTasks = toSignal(this.userAllTasks$, {
     initialValue: [] as ITask[],
   });
 }
